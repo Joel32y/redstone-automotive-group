@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b0f">
+  <meta name="description" content="REDSTONE AUTOMOTIVE GROUP — advanced automotive diagnostics, ECU programming, coding and software solutions.">
+  <title>REDSTONE AUTOMOTIVE GROUP | Automotive Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b0f;
+      --panel: #11151c;
+      --panel-2: #171c24;
+      --line: rgba(255,255,255,.10);
+      --text: #f4f5f7;
+      --muted: #a5abb5;
+      --red: #d52b35;
+      --red-bright: #f0444e;
+      --silver: #c7cbd1;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: "DM Sans", Arial, sans-serif; line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .topline { height: 3px; background: linear-gradient(90deg, transparent, var(--red), #f7a0a4, var(--red), transparent); }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(9,11,15,.90); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border: 1px solid rgba(240,68,78,.65); border-radius: 11px;
+      color: white; font: 800 25px Manrope, sans-serif;
+      background: linear-gradient(145deg, #292d35, #101318);
+      box-shadow: inset 0 0 18px rgba(213,43,53,.15);
+    }
+    .brand-name { font: 800 15px Manrope, sans-serif; letter-spacing: 1.7px; line-height: 1.2; }
+    .brand-name span { display: block; color: var(--silver); font-size: 9px; letter-spacing: 3px; margin-top: 5px; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { color: #c3c7ce; font-size: 13px; transition: color .2s; }
+    nav a:hover { color: white; }
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 19px; border-radius: 6px; font-size: 12px; font-weight: 700;
+      letter-spacing: .7px; text-transform: uppercase; transition: .2s ease;
+    }
+    .nav-cta, .btn-primary { color: white; background: var(--red); border: 1px solid var(--red); }
+    .nav-cta:hover, .btn-primary:hover { background: var(--red-bright); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(255,255,255,.28); color: white; background: rgba(255,255,255,.03); }
+    .btn-outline:hover { border-color: var(--red-bright); background: rgba(213,43,53,.10); }
+    .hero {
+      min-height: 650px; display: flex; align-items: center; position: relative; overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7,9,13,.98) 0%, rgba(7,9,13,.90) 42%, rgba(7,9,13,.40) 100%),
+        linear-gradient(0deg, #090b0f 0%, transparent 32%),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85") center 56%/cover;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 460px; height: 460px; right: -170px; top: 80px;
+      border: 1px solid rgba(213,43,53,.24); border-radius: 50%;
+      box-shadow: 0 0 0 55px rgba(213,43,53,.035), 0 0 0 110px rgba(213,43,53,.025);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; padding: 100px 0 120px; }
+    .eyebrow { color: #ff737b; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--red-bright); }
+    h1 { font: 800 clamp(42px, 7vw, 76px)/1.05 Manrope, sans-serif; letter-spacing: -2.5px; margin: 24px 0; }
+    h1 span { color: var(--red-bright); }
+    .hero-copy { color: #c2c6ce; max-width: 570px; font-size: 16px; margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+    .hero-note { margin-top: 55px; display: flex; align-items: center; gap: 14px; color: #9ca3ad; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+    .hero-note span { width: 7px; height: 7px; background: var(--red-bright); border-radius: 50%; box-shadow: 0 0 14px var(--red-bright); }
+    section { padding: 96px 0; }
+    .section-head { max-width: 650px; margin-bottom: 42px; }
+    .section-kicker { color: var(--red-bright); text-transform: uppercase; font-size: 10px; letter-spacing: 3px; font-weight: 700; }
+    h2 { font: 800 clamp(30px, 4vw, 43px)/1.15 Manrope, sans-serif; letter-spacing: -1px; margin: 12px 0 14px; }
+    .section-head p, .muted { color: var(--muted); }
+    .services { background: #0d1016; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service {
+      min-height: 220px; padding: 28px; border: 1px solid var(--line); border-radius: 9px;
+      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+    .service:hover { transform: translateY(-5px); border-color: rgba(240,68,78,.55); background: linear-gradient(145deg, rgba(213,43,53,.10), rgba(255,255,255,.015)); }
+    .service-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 9px; color: #ff737b; background: rgba(213,43,53,.12); border: 1px solid rgba(213,43,53,.25); font-size: 20px; margin-bottom: 23px; }
+    .service h3 { font: 700 17px Manrope, sans-serif; margin-bottom: 9px; }
+    .service p { color: var(--muted); font-size: 13px; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+    .about-visual {
+      min-height: 370px; border-radius: 10px; position: relative; overflow: hidden;
+      background: linear-gradient(145deg, rgba(9,11,15,.05), rgba(9,11,15,.82)),
+      url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=80") center/cover;
+      border: 1px solid var(--line);
+    }
+    .about-visual::after { content: "R"; position: absolute; right: 24px; bottom: -70px; color: rgba(255,255,255,.08); font: 800 290px Manrope; }
+    .about-copy p { color: var(--muted); margin: 15px 0 25px; }
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 26px; }
+    .principle { padding: 15px; border-left: 2px solid var(--red); background: rgba(255,255,255,.035); }
+    .principle strong { display: block; font: 700 13px Manrope; }
+    .principle small { color: var(--muted); font-size: 11px; }
+    .contact-band { padding: 0 0 96px; }
+    .contact-panel {
+      border: 1px solid rgba(240,68,78,.35); border-radius: 12px; padding: 48px;
+      background: radial-gradient(circle at 90% 20%, rgba(213,43,53,.16), transparent 35%), #12161d;
+      display: flex; justify-content: space-between; align-items: center; gap: 30px;
+    }
+    .contact-panel h2 { margin-top: 0; }
+    .contact-panel p { color: var(--muted); }
+    footer { border-top: 1px solid var(--line); background: #07090d; padding: 28px 0; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; align-items: center; color: #858c97; font-size: 11px; }
+    .footer-brand { color: #e7e9ed; font: 700 12px Manrope; letter-spacing: 1.5px; }
+    .whatsapp-float {
+      position: fixed; z-index: 30; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 9px;
+      background: #168b58; color: white; padding: 13px 17px; border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4); font-size: 12px; font-weight: 700;
+    }
+    .whatsapp-float:hover { background: #1aa66a; transform: translateY(-2px); }
+    @media (max-width: 800px) {
+      nav { gap: 14px; } nav a:not(.nav-cta) { display: none; }
+      .hero { min-height: 600px; background-position: 58% center; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-visual { min-height: 270px; }
+      .contact-panel { padding: 32px; align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(var(--max), calc(100% - 30px)); }
+      .nav { min-height: 68px; }
+      .brand { min-width: 0; }
+      .brand-mark { width: 37px; height: 37px; }
+      .brand-name { font-size: 12px; }
+      .nav-cta { padding: 10px 12px; font-size: 10px; }
+      .hero { min-height: 590px; }
+      .hero-content { padding: 85px 0 95px; }
+      .hero-copy { font-size: 14px; }
+      section { padding: 72px 0; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service { min-height: auto; }
+      .principles { grid-template-columns: 1fr; }
+      .contact-panel { padding: 25px; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+      .whatsapp-float { right: 12px; bottom: 12px; padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="REDSTONE home">
+        <div class="brand-mark">R</div>
+        <div class="brand-name">REDSTONE<span>AUTOMOTIVE GROUP</span></div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="https://wa.me/18654060991" target="_blank" rel="noopener">Talk to our team ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">Automotive technology & solutions</div>
+          <h1>ENGINEERED FOR<br><span>PRECISION.</span><br>BUILT FOR PERFORMANCE.</h1>
+          <p class="hero-copy">Advanced vehicle diagnostics, ECU programming, coding and technical software solutions — delivered with a focus on accuracy, clarity and professional support.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore our services ↗</a>
+            <a class="btn btn-outline" href="https://wa.me/18654060991" target="_blank" rel="noopener">Contact on WhatsApp</a>
+          </div>
+          <div class="hero-note"><span></span> Professional automotive technology</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">What we do</div>
+          <h2>Technical solutions.<br>Automotive expertise.</h2>
+          <p>Support across vehicle electronics, diagnostic platforms and software workflows.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service"><div class="service-icon">⌁</div><h3>OEM Diagnostics</h3><p>Vehicle fault diagnosis, system checks and guided troubleshooting using professional diagnostic workflows.</p></article>
+          <article class="service"><div class="service-icon">▦</div><h3>ECU Programming</h3><p>Electronic control unit programming support and module-related software services.</p></article>
+          <article class="service"><div class="service-icon">◈</div><h3>BMW Coding</h3><p>BMW coding, configuration and electronic feature support across compatible platforms.</p></article>
+          <article class="service"><div class="service-icon">✧</div><h3>Mercedes-Benz Solutions</h3><p>Diagnostic and software support for Mercedes-Benz electronic systems.</p></article>
+          <article class="service"><div class="service-icon">⌘</div><h3>ECU File Analysis</h3><p>Structured ECU file comparison, identification and read-only software research.</p></article>
+          <article class="service"><div class="service-icon">＋</div><h3>Multi-Brand Support</h3><p>Automotive electronic and software assistance across a range of vehicle manufacturers.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual" role="img" aria-label="Professional automotive workshop"></div>
+        <div class="about-copy">
+          <div class="section-kicker">About Redstone</div>
+          <h2>Where automotive knowledge meets technology.</h2>
+          <p>REDSTONE AUTOMOTIVE GROUP focuses on modern vehicle electronics, diagnostics, ECU solutions and automotive software research. Our approach is built around careful analysis, clear communication and responsible technical support.</p>
+          <div class="principles">
+            <div class="principle"><strong>Precision-led</strong><small>Methodical technical work</small></div>
+            <div class="principle"><strong>Multi-brand</strong><small>Broad automotive coverage</small></div>
+            <div class="principle"><strong>Professional</strong><small>Clear customer communication</small></div>
+            <div class="principle"><strong>Technology-focused</strong><small>Modern diagnostic workflows</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="section-kicker">Start a conversation</div>
+            <h2>Need technical support?</h2>
+            <p>Tell us about the vehicle, module or diagnostic challenge.</p>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/18654060991" target="_blank" rel="noopener">Message REDSTONE on WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-brand">REDSTONE AUTOMOTIVE GROUP</div>
+      <div>Precision. Technology. Performance.</div>
+      <div>© 2026 REDSTONE AUTOMOTIVE GROUP. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/18654060991" target="_blank" rel="noopener" aria-label="Chat with REDSTONE on WhatsApp">◉ WhatsApp</a>
+</body>
+</html>
